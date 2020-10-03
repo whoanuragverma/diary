@@ -1,3 +1,10 @@
+/**
+ * 
+ * Just a sample of how it is going to work. 
+ * May not work now
+ * 
+**/
+
 #include<string.h>
 #include<stdlib.h>
 #include "secrets.h"
