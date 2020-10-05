@@ -21,7 +21,7 @@ void encrypt(char input[100])
             if (i % 2 == 0) 
                 printf("%c", oddPos); 
             else
-                printf("%c", evenPos); 
+                printf("%c", evenPos); //check
         } //push check
     } 
 } 
