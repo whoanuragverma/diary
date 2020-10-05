@@ -22,7 +22,7 @@ void encrypt(char input[100])
                 printf("%c", oddPos); 
             else
                 printf("%c", evenPos); 
-        } 
+        } //push check
     } 
 } 
   
