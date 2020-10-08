@@ -1,37 +1,18 @@
-#include <stdio.h> 
-#include <string.h> 
-  
+#include <stdio.h>
 
-void encrypt(char input[100]) 
-{ 
-  
-   
-    char evenPos = '@', oddPos = '!'; 
-  
-    int repeat, ascii; 
-  
-    for (int i = 0; i <= strlen(input); i++) { 
-  
-       
-        ascii = input[i]; 
-        repeat = ascii >= 97 ? ascii - 96 : ascii - 64; 
-  
-        for (int j = 0; j < repeat; j++) { 
-           
-            if (i % 2 == 0) 
-                printf("%c", oddPos); 
-            else
-                printf("%c", evenPos); //check
-        } //push check
-    } 
-} 
-  
+int main()
+{
+   int i, x;
+   char str[100];
 
-void main() 
-{ 
-    char input[100] ;
-    scanf("%s",&input); 
+   printf("\nPlease enter a string:\t");
+   gets(str);
+
   
+      for(i = 0; (i < 100 && str[i] != '\0'); i++)
+        str[i] = str[i] + 3; //the key for encryption is 3 that is added to ASCII value
+
+      printf("\nEncrypted string: %s\n", str);
+      return 0;
+   }
   
-    encrypt(input); 
-} 
