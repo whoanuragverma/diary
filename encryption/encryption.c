@@ -6,7 +6,7 @@ char* encrypt(char* input){
     char *output = (char*)malloc(sizeof(char)*len);
     for(int i=0;i<len;i++)
         output[i] = input[i] + 3;
-    output[i] = '\0';
+    output[len] = '\0';
     return output;
 }
 
@@ -15,6 +15,6 @@ char* decrypt(char* input){
     char *output = (char*)malloc(sizeof(char)*len);
     for(int i=0;i<len;i++)
         output[i] = input[i] - 3;
-    output[i] = '\0';
+    output[len] = '\0';
     return output;
 }
