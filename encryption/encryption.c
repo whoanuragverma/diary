@@ -9,18 +9,27 @@
 #include<stdlib.h>
 #include "secrets.h"
 
-char* encrypt(char* input){
-    int len = strlen(input);
-    char *output = (char*)malloc(sizeof(char)*len);
-    for(int i=0;i<len;i++)
-        output[i] = input[i]^secrets[i%SECRETS_LEN];
-    return output;
+char* encrypt(char* str){ 
+    int i, x;
+   
+
+  
+  
+      for(i = 0; (i < 100 && str[i] != '\0'); i++)
+        str[i] = str[i] + 3; //the key for encryption is 3 that is added to ASCII value
+
+  
+    return str;
 }
 
-char* decrypt(char* input){
-    int len = strlen(input);
-    char *output = (char*)malloc(sizeof(char)*len);
-    for(int i=0;i<len;i++)
-        output[i] = input[i]^secrets[i%SECRETS_LEN];
-    return output;
+char* decrypt(char* str){
+   int i;
+   
+
+  
+   for(i = 0; (i < 100 && str[i] != '\0'); i++)
+        str[i] = str[i] - 3; //the key for encryption is 3 that is subtracted to ASCII value
+
+      
+    return str;
 }
