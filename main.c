@@ -9,7 +9,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "auth/auth.h"
-#include<conio.h>
 
 
 int main(){
