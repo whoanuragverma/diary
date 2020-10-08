@@ -7,14 +7,11 @@
  **/
 
 #include<stdio.h>
-#include "encryption/encryption.h"
+#include<stdlib.h>
+#include "auth/auth.h"
+
 
 int main(){
-    char input[100];
-    printf("Enter Something:");
-    scanf("%s",input);
-    char *crypt = encrypt(input);
-    char *dcypt = decrypt(crypt);
-    printf("Encrypted: %s\n",crypt);
-    printf("Decrypted: %s\n",dcypt);
+    if(isUserAvailable() == 0) signup();
+    else login();
 }
