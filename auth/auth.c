@@ -61,7 +61,8 @@ void login()
     printf("CORRECT PASSWORD");
 }
 
-void signup(){
+void signup()
+{
     char username[20], password[20], c;
     int index = 0;
     gotoxy (8, 44);
