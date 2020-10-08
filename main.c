@@ -9,6 +9,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "auth/auth.h"
+#include "encryption/encryption.h"
 
 
 int main(){
