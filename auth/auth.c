@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include "../Types/user.h"
+#include "../encryption/encryption.h"
 #include<stdlib.h>
 #include<string.h>
 #include<conio.h>
@@ -48,7 +49,7 @@ void login(){
             putch('*');
         }
         password[index] = '\0';
-        if(strcmp(U.password,password)==0){
+        if(strcmp(U.password,encrypt(password))==0){
             correct = 1;
             
         }
@@ -86,7 +87,7 @@ void signup(){
     printf("-----  Sign Up Succesfull -----\n");
     struct user U;
     strcpy(U.username,username);
-    strcpy(U.password,password);
+    strcpy(U.password,encrypt(password));
     FILE *fileptr = fopen("user.dat","w");
     fwrite(&U,sizeof(struct user),1,fileptr);
     fclose(fileptr);
