@@ -50,8 +50,7 @@ void login(){
         }
         password[index] = '\0';
         if(strcmp(U.password,encrypt(password))==0){
-            correct = 1;
-            
+            correct = 1; 
         }
         else correct = 0;
     }while(correct!=1);
