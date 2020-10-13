@@ -2,7 +2,7 @@
 
 A sweet and simple diary application in C
 
-[![Actions Status](https://github.com/whoanuragverma/diary/workflows/Compile_Check/badge.svg)](https://github.com/whoanuragverma/diary/actions)
+[![Actions Status](https://github.com/whoanuragverma/diary/workflows/build/badge.svg)](https://github.com/whoanuragverma/diary/actions)
 
 ## Prerequisite
 
