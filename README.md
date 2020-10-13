@@ -2,6 +2,8 @@
 
 A sweet and simple diary application in C
 
+[![Actions Status](https://github.com/whoanuragverma/diary/workflows/Compile_Check/badge.svg)](https://github.com/whoanuragverma/diary/actions)
+
 ## Prerequisite
 
 -   gcc must be installed on your system. Type gcc in your commmand prompt to verify.
