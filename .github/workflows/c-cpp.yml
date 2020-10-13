@@ -1,4 +1,4 @@
-name: Compile_Check
+name: build
 
 on:
     push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
     compilation_check:
-        runs-on: ubuntu-latest
+        runs-on: windows-latest
 
         steps:
             - uses: actions/checkout@v2
