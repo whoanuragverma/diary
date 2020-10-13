@@ -13,6 +13,6 @@
 
 int main(){
     if(isUserAvailable() == 0) signup();
-    else login();
+    else flogin();
     //diary
 }
