@@ -7,7 +7,7 @@ build: $(SRC)
 	@echo Compiling these files 
 	@echo $(SRC)
 	@echo Compiling all of these into ./main
-	@gcc $(SRC) $(LIBS) -o main || echo Compilation Failed
+	@gcc $(SRC) $(LIBS) -o main || exit 1
 run:
 	@echo Running...
 ifeq ($(OS),Windows_NT)
