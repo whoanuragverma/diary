@@ -10,7 +10,7 @@ jobs:
     compilation_check:
         runs-on: windows-latest
 
-    steps:
-    - uses: actions/checkout@v2
-    - name: make
-      run: make build
+        steps:
+            - uses: actions/checkout@v2
+            - name: make
+              run: make build
