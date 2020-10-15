@@ -53,9 +53,9 @@ void login(){
             correct = 1; 
         }
         else correct = 0;
-    }while(correct!=1);
+    }
+    while(correct!=1);
     gotoxy(2,44);
-    printf("CORRECT PASSWORD");
 }
 
 void signup(){
