@@ -1,17 +1,16 @@
-name: C/C++ CI
+name: build
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    push:
+        branches: [master]
+    pull_request:
+        branches: [master]
 
 jobs:
-  compilation_check:
+    compilation_check:
+        runs-on: windows-latest
 
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: make
-      run: make build
+        steps:
+            - uses: actions/checkout@v2
+            - name: make
+              run: make build
