@@ -18,7 +18,8 @@ int main(){
     else login();
     
     int ch = 0;
-    do{
+    do
+    {
         system ("cls");
         gotoxy(8,44);
         printf ("*****  Personal Diary Menu  *****");
@@ -44,8 +45,14 @@ int main(){
                 break;
             case 3:
                 system ("cls");
-                printf ("Logout Successful !");
+                gotoxy (10, 48);
+                printf ("***********************\n\n");
+                gotoxy (1, 50);
+                printf ("Logout Successful !\n\n");
+                gotoxy (1, 48);
+                printf ("***********************\n");
                 exit(0);
+
             default: printf ("\nWrong choice. Please try again !\n");                   
         }
     }
