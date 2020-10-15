@@ -69,13 +69,12 @@ void viewrecord()
                 printf ("\n\nMood : %s", n->mood);
                 printf ("\n\n%s\n\n---------------------\n", n->info);
                 c++;
-                Sleep(2000);
             }
-            
             n = n->next;
         }
         if (c == 0)
             printf ("\n---- No records found for the entered date ----\n");
     }    
-    Sleep (1000);
+    printf ("\nPress any key to continue..");
+    getch();
 }
