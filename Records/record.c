@@ -27,11 +27,11 @@ void addrecord(){
     else
         printf ("Date & Time: %02d/%02d/%d  %02d:%02d pm", rec->day, rec->month, rec->year, rec->hr-12, rec->min);
     gotoxy(2,44);
-    printf ("What's your mood ? ");
+    printf ("What's your mood ?\n");
     scanf ("%s", rec->mood);
     fflush (stdin);
     gotoxy(1,44);
-    printf ("What's on your mind ? \n");
+    printf ("What's on your mind ?");
     gotoxy(1,44);
     gets (rec->info);
     rec->next = NULL;
@@ -47,6 +47,7 @@ void addrecord(){
 void viewrecord(){
     system ("cls");
     FILE *fptr = fopen("records.dat","r+");
+    head = NULL;
     if(fptr!=NULL){
         while(1){
             struct diary *record = (struct diary*)malloc(sizeof(struct diary));
@@ -68,7 +69,7 @@ void viewrecord(){
     }
     gotoxy(7,44);
     if (head == NULL)
-        printf ("****** No records added yet ******");
+        printf ("****** No records added yet ******\n");
     else
     {
         struct diary *n = head;   
@@ -91,19 +92,17 @@ void viewrecord(){
                 gotoxy(0,45);
                 printf ("You wrote: %s", n->info);
                 gotoxy(2,44);
-                printf("****** END of Record ******");
+                printf("****** END of Record ******\n");
                 c++;
             }
 
             n = n->next;
         }
-
         if (c == 0)
         {
             gotoxy(1,40);
             printf ("**** No records found for the entered date ****");
-        }
-            
+        }            
     }    
     gotoxy(3,44);
     printf ("Press any key to continue..");
