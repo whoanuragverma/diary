@@ -54,13 +54,13 @@ void viewrecord(){
             record->next = NULL;
             if(feof(fptr))
                 break;
-            if(head==NULL){
+            if(head==NULL)
                 head = record;
-            }else{
+            else{
                 struct diary *n = head;
-                while (n->next != NULL){
+                while (n->next != NULL)
                     n = n->next;
-                }
+                
                 n->next = record;
             }
         }
@@ -88,7 +88,7 @@ void viewrecord(){
                     printf ("Time of entry: %02d:%02d pm\n", n->hr-12, n->min);
                 gotoxy(0,50);
                 printf ("Mood : %s\n", n->mood);
-                gotoxy(0,35);
+                gotoxy(0,45);
                 printf ("You wrote: %s", n->info);
                 gotoxy(2,44);
                 printf("****** END of Record ******");
@@ -99,9 +99,13 @@ void viewrecord(){
         }
 
         if (c == 0)
+        {
+            gotoxy(1,40);
             printf ("**** No records found for the entered date ****");
+        }
+            
     }    
-    gotoxy(2,44);
+    gotoxy(3,44);
     printf ("Press any key to continue..");
     getch();
 }
