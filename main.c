@@ -16,14 +16,22 @@
 int main(){
     if(isUserAvailable() == 0) signup();
     else login();
-
+    
     int ch = 0;
-    do
-    {
+    do{
         system ("cls");
-        printf ("***** Personal Diary Menu *****\n1. Add new record\n2. View existing record\n3. Logout\n");
-        printf ("\n*****************************\n");
-        printf ("\nWhat's your choice?\n");
+        gotoxy(8,44);
+        printf ("*****  Personal Diary Menu  *****");
+        gotoxy(1,44);
+        printf("1. Add new record");
+        gotoxy(1,44);
+        printf("2. View existing record");
+        gotoxy(1,44);
+        printf("3. Logout\n");
+        gotoxy(0,44);
+        printf ("*********************************");
+        gotoxy(1,44);
+        printf ("What's your choice? ");
         scanf ("%d", &ch);
         
         switch (ch)
