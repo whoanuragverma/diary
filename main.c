@@ -25,6 +25,7 @@ int main(){
         printf ("\n*****************************\n");
         printf ("\nWhat's your choice?\n");
         scanf ("%d", &ch);
+        
         switch (ch)
         {
             case 1:
