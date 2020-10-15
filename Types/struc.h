@@ -1,6 +1,6 @@
 struct diary
 {
-    char mood[10], info[5000];
-    int day, month, year;
+    char mood[20], info[5000];
+    int day, month, year, hr, min;
     struct diary *next;
-}*head = nullptr;
+}*head = NULL;

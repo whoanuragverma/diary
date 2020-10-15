@@ -53,16 +53,16 @@ void login(){
             correct = 1; 
         }
         else correct = 0;
-    }while(correct!=1);
+    }
+    while(correct!=1);
     gotoxy(2,44);
-    printf("CORRECT PASSWORD");
 }
 
 void signup(){
     char username[20], password[20],c;
     int index = 0;
     gotoxy(8,44);
-    printf("-----  User Regestration  -----");
+    printf("-----  User Registration  -----");
     gotoxy(2,44);
     printf("Username: ");
     gets(username);
@@ -83,7 +83,7 @@ void signup(){
         }
     password[index] = '\0';
     gotoxy(2,44);
-    printf("-----  Sign Up Succesfull -----\n");
+    printf("-----  Sign Up Successful -----\n");
     struct user U;
     strcpy(U.username,username);
     strcpy(U.password,encrypt(password));
