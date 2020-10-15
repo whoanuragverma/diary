@@ -70,11 +70,14 @@ void viewrecord()
                 printf ("\n\n%s\n\n---------------------\n", n->info);
                 c++;
             }
+
             n = n->next;
         }
+
         if (c == 0)
             printf ("\n---- No records found for the entered date ----\n");
     }    
+    
     printf ("\nPress any key to continue..");
     getch();
 }
