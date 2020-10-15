@@ -47,6 +47,7 @@ void addrecord(){
 void viewrecord(){
     system ("cls");
     FILE *fptr = fopen("records.dat","r+");
+    head = NULL;
     if(fptr!=NULL){
         while(1){
             struct diary *record = (struct diary*)malloc(sizeof(struct diary));
