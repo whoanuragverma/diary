@@ -71,6 +71,7 @@ void viewrecord()
                 c++;
                 Sleep(2000);
             }
+            
             n = n->next;
         }
         if (c == 0)
