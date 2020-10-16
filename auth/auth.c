@@ -5,12 +5,15 @@
 #include<string.h>
 #include<conio.h>
 #include<windows.h>
-void gotoxy(int a,int b){
+
+void gotoxy(int a, int b)
+{
     for(int i=0;i<a;i++)    printf("\n");
     for(int i=0;i<b;i++)    printf(" ");
 }
 
-int isUserAvailable(){
+int isUserAvailable()
+{
     FILE *fileptr = fopen("user.dat","r+");
     if ( fileptr == NULL)
         return 0;
@@ -72,19 +75,21 @@ void signup()
     gets(username);
     gotoxy(0,44);
     printf("Password: ");
-    while((c = getch()) != 13){
+    while((c = getch()) != 13)
+    {
         if(index < 0)
             index = 0;
-            if(c == 8){
-                putch('\b');
-                putch((int)NULL);
-                putch('\b');
-                index--;
+        if(c == 8)
+        {
+            putch('\b');
+            putch((int)NULL);
+            putch('\b');
+            index--;
             continue;
-            }
-            password[index++] = c;
-            putch('*');
         }
+        password[index++] = c;
+        putch('*');
+    }
     password[index] = '\0';
     gotoxy(2,44);
     printf("*****  Sign Up Successful *****\n");
@@ -144,7 +149,7 @@ void resetpass ()
     while(correct != 1);
     fclose(fileptr);
 
-    char np[20], ch;
+    char newpass[20], ch;
     FILE *fptr = fopen("user.dat","w");
     fread(&U, sizeof(struct user), 1, fptr);
     strcpy(U.username, uname);
@@ -163,11 +168,11 @@ void resetpass ()
             index--;
             continue;
         }
-        np[index++] = ch;
+        newpass[index++] = ch;
         putch('*');
     }
-    np[index] = '\0';
-    strcpy(U.password, encrypt(np));
+    newpass[index] = '\0';
+    strcpy(U.password, encrypt(newpass));
     fwrite(&U, sizeof(struct user), 1, fptr);
     fclose(fptr);
     gotoxy (2, 44);
