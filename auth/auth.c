@@ -20,6 +20,29 @@ int isUserAvailable()
     return 1;
 }
 
+char* inputpass(char *password, int index)
+{
+    char c;
+    while((c = getch()) != 13)
+    {
+        if(index < 0)
+            index = 0;
+        if(c == 8)
+        {
+            putch('\b');
+            putch((int)NULL);
+            putch('\b');
+            index--;
+            continue;
+        }
+        password[index++] = c;
+        putch('*');
+    }
+    password[index] = '\0';
+
+    return password;
+}
+
 void login()
 {
     int correct= -1;
@@ -28,7 +51,7 @@ void login()
     fread(&U, sizeof(struct user), 1, fileptr);
     do
     {
-        char password[20], c;
+        char password[20];
         int index = 0;
         system("cls");
         gotoxy(8,44);
@@ -40,22 +63,7 @@ void login()
         printf("Hello %s,\n", U.username);
         gotoxy(0,44);
         printf("Enter your password: ");
-        while((c = getch()) != 13)
-        {
-            if(index < 0)
-                index = 0;
-            if(c == 8)
-            {
-                putch('\b');
-                putch((int)NULL);
-                putch('\b');
-                index--;
-                continue;
-            }
-            password[index++] = c;
-            putch('*');
-        }
-        password[index] = '\0';
+        strcpy(password, inputpass(password, index));
         if(strcmp(U.password,encrypt(password)) == 0)
             correct = 1; 
         else 
@@ -75,22 +83,7 @@ void signup()
     gets(username);
     gotoxy(0,44);
     printf("Password: ");
-    while((c = getch()) != 13)
-    {
-        if(index < 0)
-            index = 0;
-        if(c == 8)
-        {
-            putch('\b');
-            putch((int)NULL);
-            putch('\b');
-            index--;
-            continue;
-        }
-        password[index++] = c;
-        putch('*');
-    }
-    password[index] = '\0';
+    strcpy(password, inputpass(password, index));
     gotoxy(2,44);
     printf("*****  Sign Up Successful *****\n");
     struct user U;
@@ -125,22 +118,7 @@ void resetpass ()
         printf("Hello %s,\n", U.username);
         gotoxy(0,44);
         printf("Enter old password: ");
-        while((c = getch()) != 13)
-        {
-            if(index < 0)
-                index = 0;
-            if(c == 8)
-            {
-                putch('\b');
-                putch((int)NULL);
-                putch('\b');
-                index--;
-                continue;
-            }
-            password[index++] = c;
-            putch('*');
-        }
-        password[index] = '\0';
+        strcpy(password, inputpass(password, index));
         if(strcmp(U.password, encrypt(password)) == 0)
             correct = 1;       
         else 
@@ -156,22 +134,7 @@ void resetpass ()
     index = 0;
     gotoxy(1,44);
     printf("Enter new password: ");
-    while((ch = getch()) != 13)
-    {
-        if(index < 0)
-            index = 0;
-        if(ch == 8)
-        {
-            putch('\b');
-            putch((int)NULL);
-            putch('\b');
-            index--;
-            continue;
-        }
-        newpass[index++] = ch;
-        putch('*');
-    }
-    newpass[index] = '\0';
+    strcpy(newpass, inputpass(newpass, index));
     strcpy(U.password, encrypt(newpass));
     fwrite(&U, sizeof(struct user), 1, fptr);
     fclose(fptr);
