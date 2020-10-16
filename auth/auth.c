@@ -17,13 +17,15 @@ int isUserAvailable(){
     return 1;
 }
 
-void login(){
-    int correct=-1;
+void login()
+{
+    int correct= -1;
     FILE *fileptr = fopen("user.dat","r");
     struct user U;
-    fread(&U,sizeof(struct user),1,fileptr);
-    do{
-        char password[20],c;
+    fread(&U, sizeof(struct user), 1, fileptr);
+    do
+    {
+        char password[20], c;
         int index = 0;
         system("cls");
         gotoxy(8,44);
@@ -32,32 +34,35 @@ void login(){
         gotoxy(1,44);
         printf("********** User Login ***********");
         gotoxy(2,44);
-        printf("Hello %s,\n",U.username);
+        printf("Hello %s,\n", U.username);
         gotoxy(0,44);
         printf("Enter your password: ");
-        while((c = getch()) != 13){
+        while((c = getch()) != 13)
+        {
             if(index < 0)
                 index = 0;
-                if(c == 8){
-                    putch('\b');
-                    putch((int)NULL);
-                    putch('\b');
-                    index--;
+            if(c == 8)
+            {
+                putch('\b');
+                putch((int)NULL);
+                putch('\b');
+                index--;
                 continue;
-                }
+            }
             password[index++] = c;
             putch('*');
         }
         password[index] = '\0';
-        if(strcmp(U.password,encrypt(password))==0){
+        if(strcmp(U.password,encrypt(password)) == 0)
             correct = 1; 
-        }
-        else correct = 0;
+        else 
+            correct = 0;
     }
-    while(correct!=1);
+    while(correct != 1);
 }
 
-void signup(){
+void signup()
+{
     char username[20], password[20],c;
     int index = 0;
     gotoxy(8,44);
@@ -95,5 +100,80 @@ void signup(){
 
 void resetpass ()
 {
-    
+    int correct= -1, index;
+    FILE *fileptr = fopen("user.dat","r");
+    struct user U;
+    fread(&U, sizeof(struct user), 1, fileptr);
+    char uname[20];
+    strcpy (uname, U.username);
+    do
+    {
+        char password[20], c;
+        index = 0;
+        system("cls");
+        gotoxy(8,48);
+        if(correct == 0)
+            printf("INVALID PASSWORD - TRY AGAIN");
+        gotoxy(1,44);
+        printf("********* Password Reset **********");
+        gotoxy(2,44);
+        printf("Hello %s,\n", U.username);
+        gotoxy(0,44);
+        printf("Enter old password: ");
+        while((c = getch()) != 13)
+        {
+            if(index < 0)
+                index = 0;
+            if(c == 8)
+            {
+                putch('\b');
+                putch((int)NULL);
+                putch('\b');
+                index--;
+                continue;
+            }
+            password[index++] = c;
+            putch('*');
+        }
+        password[index] = '\0';
+        if(strcmp(U.password, encrypt(password)) == 0)
+            correct = 1;       
+        else 
+            correct = 0;           
+    }
+    while(correct != 1);
+    fclose(fileptr);
+
+    char np[20], ch;
+    FILE *fptr = fopen("user.dat","w");
+    fread(&U, sizeof(struct user), 1, fptr);
+    strcpy(U.username, uname);
+    index = 0;
+    gotoxy(1,44);
+    printf("Enter new password: ");
+    while((ch = getch()) != 13)
+    {
+        if(index < 0)
+            index = 0;
+        if(ch == 8)
+        {
+            putch('\b');
+            putch((int)NULL);
+            putch('\b');
+            index--;
+            continue;
+        }
+        np[index++] = ch;
+        putch('*');
+    }
+    np[index] = '\0';
+    strcpy(U.password, encrypt(np));
+    fwrite(&U, sizeof(struct user), 1, fptr);
+    fclose(fptr);
+    gotoxy (2, 44);
+    printf("*****  Password Changed Successfully *****\n");
+    gotoxy (1, 48);
+    printf("*****  Please Login Again *****\n");
+    Sleep(2000);
+    login ();    
 }
