@@ -23,15 +23,19 @@ int main(){
         system ("cls");
         gotoxy(8,44);
         printf ("*****  Personal Diary Menu  *****");
-        gotoxy(1,44);
+        gotoxy(2,44);
         printf("1. Add new record");
         gotoxy(1,44);
         printf("2. View existing record");
         gotoxy(1,44);
-        printf("3. Logout\n");
-        gotoxy(0,44);
-        printf ("*********************************");
+        printf("3. Delete existing record");
         gotoxy(1,44);
+        printf("4. Reset your password");
+        gotoxy(1,44);
+        printf("5. Logout");
+        gotoxy(2,44);
+        printf ("*********************************");
+        gotoxy(2,44);
         printf ("What's your choice? ");
         scanf ("%d", &ch);
         
@@ -44,6 +48,12 @@ int main(){
                 viewrecord();
                 break;
             case 3:
+
+                break;
+            case 4:
+                resetpass();
+                break;
+            case 5:
                 system ("cls");
                 gotoxy (10, 48);
                 printf ("***********************\n\n");
