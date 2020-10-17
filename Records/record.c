@@ -7,7 +7,8 @@
 #include "../Types/struc.h"
 #include "../auth/auth.h"
 
-void addrecord(){
+void addrecord()
+{
     FILE *fptr = fopen("records.dat","a+");
     system("cls");
     gotoxy(8,44);
@@ -27,7 +28,7 @@ void addrecord(){
     else
         printf ("Date & Time: %02d/%02d/%d  %02d:%02d pm", rec->day, rec->month, rec->year, rec->hr-12, rec->min);
     gotoxy(2,44);
-    printf ("What's your mood ?\n");
+    printf ("What's your mood ? ");
     scanf ("%s", rec->mood);
     fflush (stdin);
     gotoxy(1,44);
@@ -44,12 +45,15 @@ void addrecord(){
     getch();
 }
 
-void viewrecord(){
+void viewrecord()
+{
     system ("cls");
     FILE *fptr = fopen("records.dat","r+");
     head = NULL;
-    if(fptr!=NULL){
-        while(1){
+    if(fptr != NULL)
+    {
+        while(1)
+        {
             struct diary *record = (struct diary*)malloc(sizeof(struct diary));
             fread(record,sizeof(struct diary),1,fptr);
             record->next = NULL;
@@ -57,7 +61,8 @@ void viewrecord(){
                 break;
             if(head==NULL)
                 head = record;
-            else{
+            else
+            {
                 struct diary *n = head;
                 while (n->next != NULL)
                     n = n->next;
@@ -109,12 +114,15 @@ void viewrecord(){
     getch();
 }
 
-void deleterecord(){
+void deleterecord()
+{
     system ("cls");
     FILE *fptr = fopen("records.dat","r+");
     head = NULL;
-    if(fptr!=NULL){
-        while(1){
+    if(fptr!=NULL)
+    {
+        while(1)
+        {
             struct diary *record = (struct diary*)malloc(sizeof(struct diary));
             fread(record,sizeof(struct diary),1,fptr);
             record->next = NULL;
@@ -146,10 +154,10 @@ void deleterecord(){
         FILE *temp = fopen("temp.dat","w");
         while (n != NULL)
         {
-            if (n->day == d && n->month == m && n->year == y){
+            if (n->day == d && n->month == m && n->year == y)
                 c++;
-            }
-            else{
+            else
+            {
                 struct diary *tempD = n;
                 tempD->next = NULL;
                 fwrite(tempD,sizeof(struct diary),1,temp);
@@ -158,12 +166,15 @@ void deleterecord(){
             n = n->next;
         }
         fclose(temp);
+
         if (c == 0)
         {
             gotoxy(1,40);
             printf ("**** No records found for the entered date ****");
             remove("temp.dat");
-        }else{
+        }
+        else
+        {
             remove("records.dat");
             rename("temp.dat","records.dat");
             gotoxy(1,40);
