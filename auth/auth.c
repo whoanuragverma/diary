@@ -21,20 +21,25 @@ int isUserAvailable()
 
 char* inputpass(char *password, int index)
 {
-    char c;
-    while((c = getch()) != 13)
+    char ch;
+    while((ch = getch()) != 13)
     {
         if(index < 0)
-            index = 0;
-        if(c == 8)
+            index = 0;           
+        if(ch == 8)
         {
-            putch('\b');
-            putch((int)NULL);
-            putch('\b');
-            index--;
-            continue;
-        }
-        password[index++] = c;
+            if (index > 0)
+            {
+                putch('\b');
+                putch((int)NULL);
+                putch('\b');
+                index--;
+                continue;
+            }
+            else
+                continue;            
+        }               
+        password[index++] = ch;
         putch('*');
     }
     password[index] = '\0';
