@@ -48,7 +48,7 @@ int main(){
                 viewrecord();
                 break;
             case 3:
-
+                deleterecord();
                 break;
             case 4:
                 resetpass();

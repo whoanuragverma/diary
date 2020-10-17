@@ -108,3 +108,69 @@ void viewrecord(){
     printf ("Press any key to continue..");
     getch();
 }
+
+void deleterecord(){
+    system ("cls");
+    FILE *fptr = fopen("records.dat","r+");
+    head = NULL;
+    if(fptr!=NULL){
+        while(1){
+            struct diary *record = (struct diary*)malloc(sizeof(struct diary));
+            fread(record,sizeof(struct diary),1,fptr);
+            record->next = NULL;
+            if(feof(fptr))
+                break;
+            if(head==NULL)
+                head = record;
+            else{
+                struct diary *n = head;
+                while (n->next != NULL)
+                    n = n->next;
+                
+                n->next = record;
+            }
+        }
+        fclose(fptr);
+    }
+    gotoxy(7,44);
+    if (head == NULL)
+        printf ("****** No records added yet ******\n");
+    else
+    {
+        struct diary *n = head;   
+        int d, m, y, c = 0;
+        printf ("****** Deleting Record ******");
+        gotoxy(2,35);
+        printf ("Enter the desired record's date (dd mm yyyy): ");
+        scanf ("%d %d %d", &d, &m, &y);
+        FILE *temp = fopen("temp.dat","w");
+        while (n != NULL)
+        {
+            if (n->day == d && n->month == m && n->year == y){
+                c++;
+            }
+            else{
+                struct diary *tempD = n;
+                tempD->next = NULL;
+                fwrite(tempD,sizeof(struct diary),1,temp);
+            }
+
+            n = n->next;
+        }
+        fclose(temp);
+        if (c == 0)
+        {
+            gotoxy(1,40);
+            printf ("**** No records found for the entered date ****");
+            remove("temp.dat");
+        }else{
+            remove("records.dat");
+            rename("temp.dat","records.dat");
+            gotoxy(1,40);
+            printf ("**** Records successfully deleted ****");
+        } 
+    }
+    gotoxy(3,44);
+    printf ("Press any key to continue..");
+    getch();   
+}
