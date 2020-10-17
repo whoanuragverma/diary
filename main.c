@@ -69,5 +69,5 @@ int main(){
                 Sleep (2000);            
         }
     }
-    while (ch != 3);
+    while (ch != 5);
 }
