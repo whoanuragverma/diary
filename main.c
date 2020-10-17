@@ -3,6 +3,7 @@
 #include "auth/auth.h"
 #include "Records/record.h"
 #include <time.h>
+#include <windows.h>
 
 
 int main(){
@@ -53,6 +54,7 @@ int main(){
                 printf ("Logout Successful !\n\n");
                 gotoxy (1, 48);
                 printf ("***********************\n");
+                Sleep(2000);
                 exit(0);
 
             default: printf ("\nWrong choice. Please try again !\n");                   
