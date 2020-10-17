@@ -53,6 +53,7 @@ int main(){
                 printf ("Logout Successful !\n\n");
                 gotoxy (1, 48);
                 printf ("***********************\n");
+                Sleep(2000);
                 exit(0);
 
             default: 

@@ -12,7 +12,7 @@ run:
 	@echo Running...
 ifeq ($(OS),Windows_NT)
 	@echo Launching new CMD on Windows
-	@CMD /C start cmd.exe /K main || echo Failed to Start CMD
+	@CMD /C start cmd.exe /C main || echo Failed to Start CMD
 else
 	@./main
 	@echo 
