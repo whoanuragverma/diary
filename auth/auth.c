@@ -53,6 +53,7 @@ void login()
     FILE *fileptr = fopen("user.dat", "r");
     struct user U;
     fread(&U, sizeof(struct user), 1, fileptr);
+    fclose(fileptr);
     do
     {
         char password[20];
@@ -105,6 +106,7 @@ void resetpass ()
     fread(&U, sizeof(struct user), 1, fileptr);
     char uname[20];
     strcpy (uname, U.username);
+    fclose(fileptr);
     do
     {
         char password[20], c;
@@ -119,13 +121,10 @@ void resetpass ()
         gotoxy(0,44);
         printf("Enter old password: ");
         strcpy(password, inputpass(password, index = 0));
-
         if(strcmp(U.password, encrypt(password)) == 0)   correct = 1;       
         else   correct = 0;           
     }
     while(correct != 1);
-    fclose(fileptr);
-
     char newpass[20], ch;
     FILE *fptr = fopen("user.dat","w");
     fread(&U, sizeof(struct user), 1, fptr);
