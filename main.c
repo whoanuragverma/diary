@@ -11,7 +11,7 @@
 #include "auth/auth.h"
 #include "Records/record.h"
 #include <time.h>
-
+#include <windows.h>
 
 int main(){
     if(isUserAvailable() == 0) signup();
@@ -63,7 +63,10 @@ int main(){
                 printf ("***********************\n");
                 exit(0);
 
-            default: printf ("\nWrong choice. Please try again !\n");                   
+            default: 
+                gotoxy(1,45);
+                printf ("Wrong choice. Please try again !\n");       
+                Sleep (2000);            
         }
     }
     while (ch != 3);
